@@ -2,8 +2,7 @@
 /**
  * 酷炫小程序相册模块微站定义
  *
- * @author agressor
- * @url 
+ * @author 一淘模板 www.ytaomb.com
  */
 defined('IN_IA') or exit('Access Denied');
 
@@ -84,15 +83,15 @@ class Hr_albumModule extends WeModule {
             }
             $remote = array(
                 'type' => intval($_GPC['type']), 
-                'ftp' => array('ssl' => intval($_GPC['ftp']['ssl']),
-                'host' => $_GPC['ftp']['host'],
-                'port' => $_GPC['ftp']['port'],
-                'username' => $_GPC['ftp']['username'],
-                'password' => $_GPC['ftp']['password'],
-                'pasv' => intval($_GPC['ftp']['pasv']),
-                'dir' => $_GPC['ftp']['dir'],
-                'url' => $_GPC['ftp']['url'],
-                'overtime' => intval($_GPC['ftp']['overtime']),),
+                'ftp' => array('ssl' => intval($_GPC['ftp']['ssl']), 
+                'host' => $_GPC['ftp']['host'], 
+                'port' => $_GPC['ftp']['port'], 
+                'username' => $_GPC['ftp']['username'], 
+                'password' => $_GPC['ftp']['password'], 
+                'pasv' => intval($_GPC['ftp']['pasv']), 
+                'dir' => $_GPC['ftp']['dir'], 
+                'url' => $_GPC['ftp']['url'], 
+                'overtime' => intval($_GPC['ftp']['overtime']),), 
                 'alioss' => array('key' => $_GPC['alioss']['key'], 
                 'secret' => $_GPC['alioss']['secret'], 
                 'url' => $_GPC['alioss']['url'],
@@ -104,8 +103,7 @@ class Hr_albumModule extends WeModule {
                 'cos' => array('appid' => trim($_GPC['cos']['appid']), 
                 'secretid' => trim($_GPC['cos']['secretid']), 
                 'secretkey' => trim($_GPC['cos']['secretkey']), 
-                'bucket' => trim($_GPC['cos']['bucket']),
-                'local' => trim($_GPC['cos']['local']),
+                'bucket' => trim($_GPC['cos']['bucket']), 
                 'url' => trim($_GPC['cos']['url'])));
             if ($remote['type'] == ATTACH_OSS){
                 if (trim($remote['alioss']['key']) == ''){
@@ -182,7 +180,7 @@ class Hr_albumModule extends WeModule {
                     }
                     $remote['cos']['url'] = strexists($remote['cos']['url'], 'http') ? trim($remote['cos']['url'], '/') : 'http://' . trim($remote['cos']['url'], '/');
                 }
-                $auth = attachment_cos_auth($remote['cos']['bucket'], $remote['cos']['appid'], $remote['cos']['secretid'], $remote['cos']['secretkey'],$remote['cos']['local']);
+                $auth = attachment_cos_auth($remote['cos']['bucket'], $remote['cos']['appid'], $remote['cos']['secretid'], $remote['cos']['secretkey']);
                 if (is_error($auth)){
                     message($auth['message']);
                 }
@@ -190,10 +188,10 @@ class Hr_albumModule extends WeModule {
             $dat = array(
                 'spacename' => $_GPC['spacename'],//空间名字   
                 'remoteskin' => $_GPC['remoteskin'],
+                'mpname' => $_GPC['mpname'],
                 'deftitle' => $_GPC['deftitle'],
                 'baseskin' => $_GPC['baseskin'],
                 'remote' => $remote,
-                'isopenthereview' => $_GPC['isopenthereview'],
                 'review' => $_GPC['review'],
                 'sharepic' => $_GPC['sharepic'],
                 'kfbg' => $_GPC['kfbg'],
@@ -202,11 +200,9 @@ class Hr_albumModule extends WeModule {
                 'isico' => $_GPC['isico'],
                 'wxyellow' => $_GPC['wxyellow'],
                 'ispay' => $_GPC['ispay'],
-                'showmode' => $_GPC['showmode'],
                 'dsdesc' => $_GPC['dsdesc'],
                 'llads' => $_GPC['llads'],
                 'iskf' => $_GPC['iskf'],
-                'ishot' => $_GPC['ishot'],
                 'paydesc' => $_GPC['paydesc'],
                 'list_style' => $_GPC['list_style'],
                 'templateid' => $_GPC['templateid']
@@ -215,7 +211,7 @@ class Hr_albumModule extends WeModule {
             if ($this->saveSettings ($dat)) {
                 $this->message ('保存成功');
             }
-
+           
         }
         $remote = $settings['remote'];         
         if (!empty($remote['alioss']['key']) && !empty($remote['alioss']['secret'])){

@@ -2,8 +2,7 @@
 /**
  * 酷炫相册模块处理程序
  *
- * @author agressor
- * @url 
+ * @author 一淘模板 www.ytaomb.com
  */
 defined('IN_IA') or exit('Access Denied');
 

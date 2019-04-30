@@ -88,19 +88,13 @@
     }
 </style>
 {if $model == 'show'}
+{if $isapp}
+<img id="apps" style="position:fixed;right:10px;bottom:200px;width:80px;height:80px;z-index:1005" src="{$skinurl}{$cfg['morebg']}"></img>
+{/if}
 <div class="toolbar">
-    <div style="position: absolute;left:20px;bottom:50px;height: 40;line-height: 40px;color:#fff;font-size:14px;text-align: left">
-        {$item['click']} 浏览<span style="margin: 0px 2px;">·</span> {$item['share']} 分享 <span style="margin: 0px 2px;">·</span> <span id="zan">{$item['best']} </span>赞
-    </div>
-    <div id="reviewbox" style="width:38px;height:38px;position: absolute;left:15px;bottom:15px;">
-        <img style="width:100%;height: 100%;" src="{$_W['siteroot']}addons/hr_album/style/images/pl.png" alt="">
-    </div>
-    <div id="like_div" style="width:38px;height:38px;position: absolute;left:80px;bottom:15px;">
-        <img id="like" style="width:100%;height: 100%;" src="{$_W['siteroot']}addons/hr_album/style/images/{if $isbested}xin2.png{else}xin1.png{/if}" alt="">
-    </div>
-    <div id="share" style="position:absolute;bottom:15px;font-size:14px;right:20px;width:100px;height:38px;line-height:38px;color:#ffFFFF;text-align:center;border-radius:6px;letter-spacing:1px;background-color: #2CB144;box-shadow:1px  2px 0 1px #000000">分享相册</div>
-    {if $cfg['ispay']}<div id="pay" style="width:38px;height:38px;border-radius: 100%;background-color: #ff4f49;position: absolute;left:150px;line-height:40px;font-weight:bold;font-size:18px;bottom:15px;text-align: center;color:#ffFFFF;">赏</div>{/if}
-    <div id="zhizuo" style="position:absolute;bottom:15px;font-size:14px;right:140px;width:100px;height:38px;line-height:38px;text-align:center;color:#ffFFFF;border-radius:6px;letter-spacing: 1px;background-color: #ed494e;box-shadow:1px  2px 0 1px #000000">点击制作</div>
+    <div id="share" style="font-size:18px;position:absolute;bottom:30px;right:30px;width:180px;height:50px;line-height:51px;color:#ffFFFF;text-align:center;border-radius: 10px;letter-spacing:2px;background-color: #36af40;box-shadow:1px  2px 0 1px #000000">转发给朋友</div>
+    {if $cfg['ispay']}<div id="pay" style="width:50px;height:50px;border-radius: 100%;background-color: #d61f21;position: absolute;left:45%;line-height:50px;font-weight:bold;font-size:18px;bottom:15px;text-align: center;color:#ffFFFF;">赏</div>{/if}
+    <div id="zhizuo" style="font-size:18px;position:absolute;bottom:30px;left:30px;width:180px;height:50px;line-height:51px;text-align:center;color:#ffFFFF;border-radius: 10px;letter-spacing:2px;background-color: #ed494e;box-shadow:1px  2px 0 1px #000000">我也要制作相册</div>
 </div>
 {/if}
 {if $model == 'edit'}
@@ -260,15 +254,15 @@
         }
         return url;
     }
-    $("#apps").on('click',function(){
-        wx.miniProgram.navigateTo({url:'/hr_album/pages/user/app',
+    $("#zhizuo").on('click',function(){
+        wx.miniProgram.switchTab({url:'/hr_album/pages/index/index',
             success: function(){
                 console.log('success')
             }
         });
     });
-    $("#zhizuo").on('click',function(){
-        wx.miniProgram.switchTab({url:'/hr_album/pages/index/index',
+    $("#apps").on('click',function(){
+        wx.miniProgram.navigateTo({url:'/hr_album/pages/user/app',
             success: function(){
                 console.log('success')
             }
@@ -327,7 +321,7 @@
             });
         });
         $("#setSave").on('click',function(){
-            wx.miniProgram.redirectTo({url:'/hr_album/pages/user/save?pid={$id}&thumb={php echo $this->imgurl()}{$data[0]['pics']}&title={$item['title']}&isshow={$item['isshow']}',
+            wx.miniProgram.redirectTo({url:'/hr_album/pages/user/save?pid={$id}&thumb={$skinurl}{$data[0]['pics']}&title={$item['title']}&isshow={$item['isshow']}',
                 success: function(){
                     console.log('success')
                 }
@@ -344,7 +338,7 @@
                 success: function(data){
                     var img = '{$_W['siteroot']}addons/hr_album/style/images/xin2.png';
                     var zan = '{php echo $item['best']+1}';
-                    $("#like").attr('src',img);
+                    $("#xin").attr('src',img);
                     $("#zan").text(zan);
                 }
             });

@@ -47,6 +47,12 @@
     </div>
   </div>
   <div class="layui-form-item">
+    <label class="layui-form-label">公众号名称</label>
+    <div class="layui-input-block">
+      <input type="text" name="mpname" value="{$settings['mpname']}"  placeholder="用于小程序加粉" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
     <label class="layui-form-label">创建相册模板标题</label>
     <div class="layui-input-block">
       <input type="text" name="deftitle" value="{if $settings['deftitle']}{$settings['deftitle']}{else}送上我亲手制作的相册，快看看吧{/if}"  placeholder="送上我亲手制作的相册，快看看吧" autocomplete="off" class="layui-input">
@@ -78,28 +84,7 @@
        <input type="radio" name="review" value="1" title="审核页面【美女列表】"  {if $settings['review'] == 1} checked="checked" {/if}>
       <input type="radio" name="review" value="2" title="审核页面【祝福列表】"  {if $settings['review'] == 2} checked="checked" {/if}>
     </div>
-  </div>
-  <div class="layui-form-item" pane>
-    <label class="layui-form-label">是否开启评论和赞</label>
-    <div class="layui-input-block">
-      <input type="radio" name="isopenthereview" value="0" title="不开启"  {if !$settings['isopenthereview']} checked="checked" {/if}>
-      <input type="radio" name="isopenthereview" value="1" title="开启"  {if $settings['isopenthereview']} checked="checked" {/if}>
-    </div>
-  </div>
-  <div class="layui-form-item" pane>
-    <label class="layui-form-label">首页模板</label>
-    <div class="layui-input-block">
-      <input type="radio" name="showmode" value="0" title="用户相册展示"  {if !$settings['showmode']} checked="checked" {/if}>
-      <input type="radio" name="showmode" value="1" title="相册模板展示"  {if $settings['showmode']} checked="checked" {/if}>
-    </div>
-  </div>
-  <div class="layui-form-item" pane>
-    <label class="layui-form-label">首页列表内容排序</label>
-    <div class="layui-input-block">
-      <input type="radio" name="ishot" value="0" title="时间排序"  {if !$settings['ishot']} checked="checked" {/if}>
-      <input type="radio" name="ishot" value="1" title="点击排序"  {if $settings['ishot']} checked="checked" {/if}>
-    </div>
-  </div>
+  </div> 
   <div class="layui-form-item" pane>
     <label class="layui-form-label">用户展示作品是否审核</label>
     <div class="layui-input-block">
@@ -360,25 +345,7 @@
     <div class="layui-input-block">
       <input type="text" name="cos[bucket]" value="{$remote['cos']['bucket']}"  placeholder="请保证bucket为可公共读取的" autocomplete="off" class="layui-input">
     </div>
-  </div>
-  <div class="layui-form-item" id="local">
-    <label class="layui-form-label">bucket所在区域</label>
-    <div class="layui-input-block">
-      <select name="cos[local]">
-        <option>请选择</option>
-        <option value="" {if $remote['cos']['local'] == ''}selected{/if}>无</option>
-        <option value="tj" {if $remote['cos']['local'] == 'tj'}selected{/if}>华北</option>
-        <option value="sh" {if $remote['cos']['local'] == 'sh'}selected{/if}>华东</option>
-        <option value="gz" {if $remote['cos']['local'] == 'gz'}selected{/if}>华南</option>
-        <option value="cd" {if $remote['cos']['local'] == 'cd'}selected{/if}>西南</option>
-        <option value="bj" {if $remote['cos']['local'] == 'bj'}selected{/if}>北京</option>
-        <option value="sgp" {if $remote['cos']['local'] == 'sgp'}selected{/if}>新加坡</option>
-        <option value="hk" {if $remote['cos']['local'] == 'hk'}selected{/if}>香港</option>
-        <option value="ca" {if $remote['cos']['local'] == 'ca'}selected{/if}>多伦多</option>
-        <option value="ger" {if $remote['cos']['local'] == 'ger'}selected{/if}>法兰克福</option>
-      </select>
-    </div>
-  </div>
+  </div> 
   <div class="layui-form-item">
     <label class="layui-form-label">Url</label>
     <div class="layui-input-block">
@@ -643,18 +610,12 @@
 			util.message('请填写bucket');
 			return false;
 		}
-        var local = $.trim($('select[name="cos[local]"]').val());
-        if (local == '') {
-            util.message('请选择bucket所在区域');
-            return false;
-        }
 		var url = $.trim($(':text[name="cos[url]"]').val());
 		var param = {
 			'appid' : appid,
 			'secretid' : secretid,
 			'secretkey'  : secretkey,
 			'bucket' :  bucket,
-            'local' : local,
 			'url' : url
 		};
 		$.post("{php echo url('system/attachment/cos')}",param, function(data) {

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns="http://www.17878.pw" versionCode="0.8,1.0">
+<manifest xmlns="http://www.we7.cc" versionCode="0.8,1.0">
 	<application setting="true">
 		<name><![CDATA[酷炫小程序相册]]></name>
 		<identifie><![CDATA[hr_album]]></identifie>
-		<version><![CDATA[4.5.4]]></version>
+		<version><![CDATA[4.4]]></version>
 		<type><![CDATA[activity]]></type>
 		<ability><![CDATA[酷炫小程序相册]]></ability>
 		<description><![CDATA[酷炫小程序相册]]></description>
-		<author><![CDATA[一起吧源码]]></author>
-		<url><![CDATA[https://wwww.17878.pw]]></url>
+		<author><![CDATA[新源代]]></author>
+		<url><![CDATA[http://www.xydai.cn]]></url>
 	</application>
 	<platform>
 		<subscribes>
@@ -18,23 +18,18 @@
 		<rule embed="false" />
 		<card embed="false" />
 		<supports>
-    			<item type="wxapp" />
-                </supports>
+			<item type="wxapp" />
+		</supports>
 	</platform>
 	<bindings>
 		<menu>
-			<entry title="音乐管理" do="music" state="" direct="false" />
-			<entry title="相册管理" do="list" state="" direct="false" />
 			<entry title="基本设置" do="set" state="" direct="false" />
+			<entry title="相册管理" do="list" state="" direct="false" />
+			<entry title="音乐管理" do="music" state="" direct="false" />
 			<entry title="评论管理" do="review" state="" direct="false" />
 			<entry title="举报管理" do="report" state="" direct="false" />
 		</menu>
-		<page>
-			<entry title="我的相册" do="/hr_album/pages/user/user" state="" direct="false" />
-		</page>
 	</bindings>
-	<permissions>
-	</permissions>
 	<install><![CDATA[CREATE TABLE IF NOT EXISTS `ims_hr_album_ads` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `uniacid` int(10) NOT NULL DEFAULT '0',
@@ -95,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `ims_hr_album_data` (
   PRIMARY KEY (`id`),
   KEY `index_uniacid` (`uniacid`),
   KEY `index_openid` (`openid`)
-) ENGINE=MyISAM AUTO_INCREMENT=279 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 CREATE TABLE IF NOT EXISTS `ims_hr_album_formdata` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `uniacid` int(10) DEFAULT '0',
@@ -104,25 +99,6 @@ CREATE TABLE IF NOT EXISTS `ims_hr_album_formdata` (
   `addtime` int(10) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `indx_id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=444 DEFAULT CHARSET=utf8;
-CREATE TABLE IF NOT EXISTS `ims_hr_album_incate` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `uniacid` int(10) NOT NULL,
-  `displayorder` int(10) NOT NULL,
-  `title` varchar(20) NOT NULL,
-  `addtime` int(10) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-CREATE TABLE IF NOT EXISTS `ims_hr_album_inskin` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `uniacid` int(10) NOT NULL,
-  `displayorder` int(10) NOT NULL,
-  `cid` int(10) NOT NULL,
-  `title` varchar(20) NOT NULL,
-  `thumb` varchar(500) NOT NULL,
-  `skin` int(10) NOT NULL,
-  `addtime` int(10) NOT NULL,
-  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 CREATE TABLE IF NOT EXISTS `ims_hr_album_mucate` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -132,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `ims_hr_album_mucate` (
   `oldtitle` varchar(20) NOT NULL,
   `addtime` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 CREATE TABLE IF NOT EXISTS `ims_hr_album_music` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `uniacid` int(10) NOT NULL,
@@ -142,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `ims_hr_album_music` (
   `music` varchar(500) NOT NULL,
   `addtime` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=273 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 CREATE TABLE IF NOT EXISTS `ims_hr_album_paydata` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `uniacid` int(10) unsigned NOT NULL,
@@ -230,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `ims_hr_album_skin` (
   `remoted` tinyint(1) DEFAULT '0',
   `addtime` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=101 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 CREATE TABLE IF NOT EXISTS `ims_hr_album_skincate` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `uniacid` int(10) NOT NULL,
@@ -238,7 +214,7 @@ CREATE TABLE IF NOT EXISTS `ims_hr_album_skincate` (
   `title` varchar(20) NOT NULL,
   `addtime` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 CREATE TABLE IF NOT EXISTS `ims_hr_album_user` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `uniacid` int(10) unsigned NOT NULL,
@@ -252,15 +228,13 @@ CREATE TABLE IF NOT EXISTS `ims_hr_album_user` (
   PRIMARY KEY (`id`),
   KEY `index_uniacid` (`uniacid`),
   KEY `index_openid` (`openid`)
-) ENGINE=MyISAM AUTO_INCREMENT=81 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 ]]></install>
 	<uninstall><![CDATA[DROP TABLE IF EXISTS `ims_hr_album_ads`;
 DROP TABLE IF EXISTS `ims_hr_album_app`;
 DROP TABLE IF EXISTS `ims_hr_album_cashpay`;
 DROP TABLE IF EXISTS `ims_hr_album_data`;
 DROP TABLE IF EXISTS `ims_hr_album_formdata`;
-DROP TABLE IF EXISTS `ims_hr_album_incate`;
-DROP TABLE IF EXISTS `ims_hr_album_inskin`;
 DROP TABLE IF EXISTS `ims_hr_album_mucate`;
 DROP TABLE IF EXISTS `ims_hr_album_music`;
 DROP TABLE IF EXISTS `ims_hr_album_paydata`;
