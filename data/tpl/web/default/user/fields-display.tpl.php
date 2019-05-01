@@ -21,7 +21,7 @@
 		<col />
 		<col />
 		<col />
-		
+
 		<tr>
 			<th >排序</th>
 			<th class="text-left">字段名</th>
@@ -46,7 +46,7 @@
 					<input id='regist-check-{{field.id}}' type="checkbox" value="1" name='showinregister[{{field.id}}]' ng-checked="field.showinregister == 1">
 					<label for="regist-check-{{field.id}}">&nbsp;</label>
 				</div>
-			</td> 
+			</td>
 			<td>
 				<div class="we7-form">
 					<input id='require-check-{{field.id}}' type="checkbox" value="1" name='required[{{field.id}}]' ng-checked='field.required == 1'>
@@ -72,5 +72,5 @@
 		},
 	});
 	angular.bootstrap($('#js-fields-display'), ['userManageApp']);
-</script>		
+</script>
 <?php (!empty($this) && $this instanceof WeModuleSite || 0) ? (include $this->template('common/footer', TEMPLATE_INCLUDEPATH)) : (include template('common/footer', TEMPLATE_INCLUDEPATH));?>
